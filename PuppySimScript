@@ -80,6 +80,18 @@ Section:NewButton("Rice Field", "ButtonInfo", function()
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-150.933548, 25.1272907, 305.755707, 0.981918931, 9.7886268e-09, -0.189302042, -1.2101788e-08, 1, -1.10635217e-08, 0.189302042, 1.31543745e-08, 0.981918931)
 end)
 
+Section:NewButton("Cactus Field", "ButtonInfo", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-185.470139, 15.2097769, -82.1353912, -0.998518348, 6.72062095e-09, -0.0544157661, 6.42866782e-09, 1, 5.54026736e-09, 0.0544157661, 5.18223775e-09, -0.998518348)
+end)
+
+Section:NewButton("Banana Field", "ButtonInfo", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(45.66745, -32.2428436, -72.7355347, -0.11975655, -0.632542551, 0.765211284, -0.0161458738, 0.771897137, 0.635542393, -0.992671967, 0.0637553558, -0.102652684)
+end)
+
+Section:NewButton("Daisy Field", "ButtonInfo", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(131.463882, 78.4427338, -230.628128, 0.935035348, -0.233898371, 0.266459078, -0.0297649074, 0.697095335, 0.716360331, -0.353302896, -0.677753389, 0.644846857)
+end)
+
 local Tab = Window:NewTab("Player")
 
 local Section = Tab:NewSection("Player Settings")
@@ -586,6 +598,111 @@ Section:NewButton("Fly Gui", "Creates a fly gui", function()
 				end)
 
 
+Section:NewButton("Anti Afk", "AntiAFK", function()
+	local Rice = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Credits = Instance.new("TextLabel")
+local Activate = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local OpenClose = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+
+Rice.Name = "Rice"
+Rice.Parent = game.CoreGui
+Rice.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Main.Name = "Main"
+Main.Parent = Rice
+Main.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.321207851, 0, 0.409807354, 0)
+Main.Size = UDim2.new(0, 295, 0, 116)
+Main.Visible = false
+Main.Active = true
+Main.Draggable =  true
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(0, 295, 0, 16)
+Title.Font = Enum.Font.GothamBold
+Title.Text = "Abricos Anti-Afk"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 12.000
+Title.TextWrapped = true
+
+Credits.Name = "Credits"
+Credits.Parent = Main
+Credits.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Credits.BorderSizePixel = 0
+Credits.Position = UDim2.new(0, 0, 0.861901641, 0)
+Credits.Size = UDim2.new(0, 295, 0, 16)
+Credits.Font = Enum.Font.GothamBold
+Credits.Text = "Made by Sakoro65#0364"
+Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credits.TextScaled = true
+Credits.TextSize = 12.000
+Credits.TextWrapped = true
+
+Activate.Name = "Activate"
+Activate.Parent = Main
+Activate.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Activate.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Activate.BorderSizePixel = 0
+Activate.Position = UDim2.new(0.0330629945, 0, 0.243326917, 0)
+Activate.Size = UDim2.new(0, 274, 0, 59)
+Activate.Font = Enum.Font.GothamBold
+Activate.Text = "Activate"
+Activate.TextColor3 = Color3.fromRGB(0, 255, 127)
+Activate.TextSize = 43.000
+Activate.TextStrokeColor3 = Color3.fromRGB(102, 255, 115)
+Activate.MouseButton1Down:connect(function()
+	local vu = game:GetService("VirtualUser")
+	game:GetService("Players").LocalPlayer.Idled:connect(function()
+		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		wait(1)
+		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+	end)
+end)
+
+
+UICorner.Parent = Activate
+
+OpenClose.Name = "Open/Close"
+OpenClose.Parent = Rice
+OpenClose.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+OpenClose.Position = UDim2.new(0.353924811, 0, 0.921739101, 0)
+OpenClose.Size = UDim2.new(0, 247, 0, 35)
+OpenClose.Font = Enum.Font.GothamBold
+OpenClose.Text = "Open/Close"
+OpenClose.TextColor3 = Color3.fromRGB(255, 255, 255)
+OpenClose.TextSize = 14.000
+
+UICorner_2.Parent = OpenClose
+
+local function NERMBF_fake_script() -- OpenClose.LocalScript 
+	local script = Instance.new('LocalScript', OpenClose)
+
+	local frame = script.Parent.Parent.Main
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		frame.Visible = not frame.Visible
+	end)
+end
+coroutine.wrap(NERMBF_fake_script)()
+
+wait(1)
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+				Title = "AntiAFK";
+				Text = "Succesfully loaded AntiAFK";
+				Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
+				Duration = 5;
+
+	end)
+
 local Tab = Window:NewTab("AutoThings")
 
 local Section = Tab:NewSection("Here you can find some auto features (AUTOFARM ISN'T READY CUZ IM BAD SCRIPTER")
@@ -614,8 +731,6 @@ Section:NewButton("Collect All 1st location Secrets", "*Collects only 1st locati
 wait(1)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-331.575165, -7.92182922, 180.137527, 0.192834765, 0, -0.981231272, 0, 1, 0, 0.981231272, 0, 0.19283)
 wait(1)
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-72.9098358, -33.3407555, 54.8184891, 0.0865074918, 0, 0.996251225, 0, 1, 0, -0.996251225, 0, 0.0865)
-wait(1)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-198.298416, 37.0029144, 418.250275, 0.935218215, 0, 0.354071885, 0, 1, 0, -0.354071885, 0, 0.9352182)
 wait(1)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-221.731415, 57.3624649, 386.939941, -0.945795536, 0, -0.324762702, 0, 1, 0, 0.324762702, 0, -0.94579)
@@ -643,8 +758,39 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 				Text = "Done";
 				Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
 				Duration = 5;
+			end)
+
+
+Section:NewButton("Collect All 2nd location Secrets", "*Collects only 2nd location secrets* ", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-369.632629, 48.2672729, -122.601234, -0.809979439, 0, -0.586458266, 0, 1, 0, 0.586458266, 0, -0.8099794)
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-247.73909, 83.2311096, -356.060577, 0.892203271, 0, 0.451634049, 0, 1, 0, -0.451634049, 0, 0.89220)
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150.956482, 6.10998821, -119.849113, -0.999987841, 0, 0.00493348809, 0, 1, 0, -0.00493348809, 0, -0.9)
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-323.771362, -3.71421838, 3.13871026, 1, 0, 1.74845553e-07, 0, 1, 0, -1.74845553e-07, 0, 1)
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(186.684692, -40.8387413, 55.4458923, -0.502344072, 0, -0.864667833, 0, 1, 0, 0.864667833, 0, -0.5023440)
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(166.257416, 25.6450672, -324.46637, -0.929952681, 0, -0.367679179, 0, 1, 0, 0.367679179, 0, -0.9299526)
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5.93954134, -42.0559196, -29.0793552, -0.983234286, 0.0316303447, 0.179581955, 0.0366326123, 0.999025762, 0.0246066563, -0.178628683, 0.0307726637, -0.98343)
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-142.386292, -8.09300709, 140.12265, -0.926930189, -4.96884098e-08, 0.375233799, -5.22726005e-08, 1, 3.29223115e-09, -0.375233799, -1.65627796e-08, -0.926930189)
+
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+				Title = "Secret Collecter";
+				Text = "Done";
+				Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
+				Duration = 5;
 
 end)
+
+local Tab = Window:NewTab("Credits")
+local Section = Tab:NewSection("Script made by Sakoro65#0364")
+	
+
+
 
 
 
